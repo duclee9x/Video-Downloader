@@ -18,13 +18,11 @@ const download = async (file) => {
     await response.data.pipe(fs.createWriteStream(outputVideoPath));
   }
 };
-const asyncLog = async (item) => {
-  await download(item);
-};
+
 const downloadVideo = async (array) => {
   for (let i = 0; i < array.length; i += 1) {
-    await asyncLog(array[i]);
-    console.log('Done Video' + i);
+    await download(array[i]);
+    console.log('Done Video ' + i);
   }
 };
 fs.readdir(jsonPath, (err, files) => {
